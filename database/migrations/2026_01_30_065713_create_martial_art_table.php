@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up()
+    {
+        Schema::create('martial_arts', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('image_url')->nullable();
+            $table->integer('total_students')->default(0);
+            $table->string('head_instructor')->nullable();
+            $table->string('assistant_instructors')->nullable();
+            $table->year('year_integrated')->nullable();
+            $table->integer('gold_medals')->default(0);
+            $table->integer('silver_medals')->default(0);
+            $table->integer('bronze_medals')->default(0);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('martial_arts');
+    }
+};
